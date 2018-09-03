@@ -1,20 +1,97 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div *ngIf="showUserList" class="container">
+  <!-- Discount Project List Starts -->
+  <div>
+    <section class="row">
+      <div class="col-md-12">
+        <h1 class="page-header">User List </h1>
+      </div>
+      <!-- <div class="col-md-12">
+              <ul class="breadcrumb">
+                  <li>
+                      <a (click)="redirectTo('dashboard')">Home</a>
+                  </li>
+                  <li class="active">Discount Configuration</li>
+              </ul>
+          </div> -->
+    </section>
+    <div class="row">
+      <div class="col-md-12" *ngIf="fetchUserListFailed">
+        <div class="alert alert-danger">
+          <a class="close" data-dismiss="alert" aria-label="close" title="close"><sup>x</sup></a>
+          Fetch User List is failed!!!
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="process" id="requestorProcessing">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <div class="table-responsive">
+                    <table id="mytable" class="table table-bordered table-striped width-based-table">
+                      <thead>
+                        <tr>
+                          <th class="width-45">
+                            <button type="button" class="btn btn-primary btn-xs" (click)="toggleSearchIcon()">
+                              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                          </th>
+                          <th class="width-80">
+                            <div (click)="sort('id')">
+                              ID
+                              <span class="glyphicon sort-icon" *ngIf="key =='id'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </div>
+                            <input [hidden]="!showSearch" class="seacrh-input" type="text" name="filterByID"
+                              [(ngModel)]="filterByID" (keyup)="updateFilterContext('filterByIDSearchObj', 'id', filterByID)"
+                              placeholder="By ID">
+                          </th>
 
+                          <th>
+                            <div (click)="sort('title')">
+                              Title
+                              <span class="glyphicon sort-icon" *ngIf="key =='title'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </div>
+                            <input [hidden]="!showSearch" class="seacrh-input" type="text" name="filterByTitle"
+                              [(ngModel)]="filterByTitle" (keyup)="updateFilterContext('filterByTitleSearchObj', 'title', filterByTitle)"
+                              placeholder="By Title">
+                          </th>
+
+                          <th>
+                            <div (click)="sort('body')">
+                              Body
+                              <span class="glyphicon sort-icon" *ngIf="key =='body'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </div>
+                            <input [hidden]="!showSearch" class="seacrh-input" type="text" name="filterByBody"
+                              [(ngModel)]="filterByBody" (keyup)="updateFilterContext('filterByBodySearchObj', 'body', filterByBody)"
+                              placeholder="By Body">
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of usersList | sharedFilter : filterByIDSearchObj | sharedFilter : filterByTitleSearchObj | sharedFilter : filterByBodySearchObj | orderBy: key : reverse | paginate: {itemsPerPage: 10, currentPage:page, id: 'usersList'}; let i = index">
+                          <td class="width-45"></td>
+                          <td class="width-80"> {{ user.id }} </td>
+                          <td> {{ user.title }} </td>
+                          <td> {{ user.body }} </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <pagination-controls class="pull-right" (pageChange)="page = $event" id="usersList" maxSize="5"
+                  directionLinks="true" autoHide="true">
+                </pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Discount Project List Ends -->

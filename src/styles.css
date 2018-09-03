@@ -1,1 +1,104 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+body {
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#70716b)) fixed !important;
+  font-family: open_sansregular, Arial, Helvetica, Sans-serif;
+  color: #252525;
+  scrollbar-base-color: #045690;
+  scrollbar-3dlight-color: #045690;
+  scrollbar-highlight-color: #045690;
+  scrollbar-track-color: #045690;
+  scrollbar-arrow-color: #045690;
+  scrollbar-shadow-color: #045690;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  align-items: center;
+}
+
+.width-45 {
+    width: 45px !important;
+}
+.width-60 {
+    width: 60px !important;
+}
+.width-70 {
+    width: 70px !important;
+}
+.width-80 {
+    width: 80px !important;
+}
+
+.table-striped.border-odd tbody tr:nth-of-type(odd) {
+  border: 0px solid #fff !important;
+  background: none
+}
+
+.table-striped.border-odd tbody td {
+  border: 0px solid #fff !important;
+  background: none
+}
+
+.block-ui-wrapper{
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+}
+
+.row {
+  position: relative;
+}
+
+.bottom-align-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid #717070;
+  border-radius: 5px;
+}
+
+/* .table-striped th {
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid #717070;
+    border-radius: 5px;
+    text-align: center;
+} */
+
+table thead th {
+    word-wrap:break-word;
+    white-space: pre-line;
+    background: #337abc; 
+    color: #fff; 
+    min-height: 300px;
+    font-weight: bold;
+    text-align: center;
+    border-collapse: collapse;
+    border: 0px;
+}
+
+table {
+    border: 1px solid #337abc;
+}
+
+input[type='text'] {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #337abc;
+    padding:5px;
+}
+
+.table-bordered, .table-responsive {
+    border-radius: 5px !important;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #337abc !important;
+}
+
+
+.table-bordered td:odd {
+    background-color: #c4d9e5;
+}
