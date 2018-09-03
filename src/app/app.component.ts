@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   private filterByBodySearchObj: any;
   private key: string;
   private reverse: boolean;
+  private errorMessage: string;
   constructor(private appService: AppService) {}
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
     this.filterByIDSearchObj = '';
     this.filterByTitle = '';
     this.filterByTitleSearchObj = '';
+    this.errorMessage = 'Fetch User List is failed!!!';
     this.sort('id');
     this.getUsersList();
   }
@@ -52,6 +54,7 @@ export class AppComponent implements OnInit {
       (error) => {
         this.showUserList = false;
         this.fetchUserListFailed = true;
+        this.errorMessage = error.message.actionResult.errors[0].description;
       }
     );
   }

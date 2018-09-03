@@ -8,6 +8,7 @@ import { HttpClient, HttpClientModule, HttpResponse } from '@angular/common/http
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { constants } from './app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AppService {
 
   getUserslist(): Observable<any> {
 
-     const getUserslistURL = 'http://jsonplaceholder.typicode.com/posts';
+     const getUserslistURL = constants.GET_USER_LIST;
       return this.http
         .get(getUserslistURL)
         .map((response: any) => {

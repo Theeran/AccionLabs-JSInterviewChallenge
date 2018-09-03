@@ -1,20 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
-body {
-  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#70716b)) fixed !important;
-  font-family: open_sansregular, Arial, Helvetica, Sans-serif;
-  color: #252525;
-  scrollbar-base-color: #045690;
-  scrollbar-3dlight-color: #045690;
-  scrollbar-highlight-color: #045690;
-  scrollbar-track-color: #045690;
-  scrollbar-arrow-color: #045690;
-  scrollbar-shadow-color: #045690;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+body { 
+ background: #fff !important;
+    color: #252525;
+   
   align-items: center;
 }
-
+ .fa-user:before {
+    content: "\f007";
+     color: #337abc;
+}
+.page-header {
+   
+    border-bottom: 1px solid #337abc;
+    color: #337abc;
+}
 .width-45 {
     width: 45px !important;
 }
@@ -54,7 +55,7 @@ body {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(43, 92, 232, 0.05);
   border: 1px solid #717070;
   border-radius: 5px;
 }
@@ -88,6 +89,7 @@ input[type='text'] {
     border-radius: 5px;
     border: 1px solid #337abc;
     padding:5px;
+    color: #252525;
 }
 
 .table-bordered, .table-responsive {
@@ -101,4 +103,8 @@ input[type='text'] {
 
 .table-bordered td:odd {
     background-color: #c4d9e5;
-}
+} 
+
+.table-striped>tbody>tr:hover {
+    background: #ccc;
+} 

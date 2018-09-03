@@ -3,7 +3,8 @@
   <div>
     <section class="row">
       <div class="col-md-12">
-        <h1 class="page-header">User List </h1>
+        
+        <h1 class="page-header"><i class="fa fa-user"></i> User List </h1>
       </div>
       <!-- <div class="col-md-12">
               <ul class="breadcrumb">
@@ -18,7 +19,7 @@
       <div class="col-md-12" *ngIf="fetchUserListFailed">
         <div class="alert alert-danger">
           <a class="close" data-dismiss="alert" aria-label="close" title="close"><sup>x</sup></a>
-          Fetch User List is failed!!!
+          {{ errorMessage }}
         </div>
       </div>
     </div>
